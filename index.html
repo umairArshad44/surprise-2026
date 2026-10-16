@@ -2974,13 +2974,13 @@
           for (index = 0; index < subpaths.length; index++) {
             if (subpaths[index].pathLength >= lengthAtT) { break; }
           }
-          function get_T(tt, idx) {
-            lengthAtT = pathlength * tt; var T;
-            if (idx > 0) {
-              T = (lengthAtT - subpaths[idx].previous.pathLength) / (subpaths[idx].pathLength - subpaths[idx].previous.pathLength);
-            } else { T = lengthAtT / subpaths[idx].pathLength; }
-            return T;
-          }
+        function get_T(tt, idx) {
+  lengthAtT = pathlength * tt; var T;
+  if (idx > 0) {
+    T = (lengthAtT - subpaths[idx - 1].pathLength) / (subpaths[idx].pathLength - subpaths[idx - 1].pathLength);
+  } else { T = lengthAtT / subpaths[idx].pathLength; }
+  return T;
+}
           function lerp(A, B, tt) { return [(B[0] - A[0]) * tt + A[0], (B[1] - A[1]) * tt + A[1]]; }
           function getBezierPoints(tt, points) {
             var helper = [];
